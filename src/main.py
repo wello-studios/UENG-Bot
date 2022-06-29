@@ -6,9 +6,9 @@ import discord
 from discord.commands import Option
 
 bot = discord.Bot()
-token = "OTUxNzg4MDg5NzI1MDM0NTI2.GW-nDR.fn7zFQEUW1ULY3QbdjrRXjIMX8GVGxzqL0ymOc"
+token = "PRIVACY"
 
-bot_serverid = 984047852173033494
+bot_serverid = "Privacy"
 
 CompanyNames = [
     None,
@@ -81,11 +81,6 @@ def ChangeValue():
     else:
         WriteCompanyValue(round((ReadCompanyValue(CompanyIndex) + ChangeAmount)*1000)/1000, CompanyIndex)
 
-    '''print('코인   : ' + CompanyNames[CompanyIndex] + '코인')
-    print('변화량 : ' + str(ChangeAmount) + '원')
-    print(CompanyNames[CompanyIndex] + '코인 현재 가격 : ' + str(ReadCompanyValue(CompanyIndex)))
-    print('-' * 20)
-    #'''
     return CompanyIndex - 1, ChangeAmount
 
 
