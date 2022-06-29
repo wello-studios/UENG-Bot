@@ -299,4 +299,4 @@ async def loaduserdata(ctx, id: Option(str, "유저의 아이디", required=True
     await ctx.respond(embed=embed)
 
 
-bot.run("OTUxNzg4MDg5NzI1MDM0NTI2.Gfaliq._u2jEGxbu3gxDqwIPWvDxcmKFhUBybMBL3LfSs")
+bot.run("TOKEN")
