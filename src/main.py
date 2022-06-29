@@ -267,15 +267,24 @@ async def buycoin(ctx, 코인: Option(str, "구매 하고 싶은 코인의 이�
     prize = 수량 * value
 
     user = ReadUserValue(ctx.author.id, index)
+    
+    global embed
     if user["money"] > prize:
         WriteUserMoney(user["money"] - prize, ctx.author.id)
         WriteUserValue(user["coins"][index-1] + 수량, ctx.author.id, index)
 
         embed = discord.Embed(title="거래 성공! :white_check_mark:", description=코인 + "코인 " + 수량 + "개를 성공적으로 구입하였습니다.", color=0x2aef2a)
-        embed.add_field
-    else:
-        embed = discord.Embed(title="거래 실패... :x:")
 
+        embed.add_field(name="코인",value=코인,inline=True)
+        embed.add_field(name="수량",value=수량,inline=True)
+
+        embed.add_field(name="거래 금액",value=prize,inline=False)
+        embed.add_field(name="거래 후 잔액",value=user["money"],inline=True)
+    else:
+        embed = discord.Embed(title="거래 실패.. :x:",color=0xef2a2a)
+        embed.add_field(name="잔액이 부족합니다.",value=user["money"])
+
+    await ctx.respond(embed=embed)
 
 @bot.slash_command(guild_ids = [838725916607119383],name="유저정보" ,description="| 제작자 전용 |  코인 봇의 유저 데이터를 불러옵니다.")
 async def loaduserdata(ctx, id: Option(str, "유저의 아이디", required=True), index: Option(str, "가져올 인덱스", required=False)):
